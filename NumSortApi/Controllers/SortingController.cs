@@ -13,17 +13,22 @@ namespace NumSortApi
     public class SortingController : ControllerBase
     {
         [HttpGet]
-        public string Get()
+        public string GetLatestSortedNumbers()
         {
             var response = JsonSerializer.Serialize(NumberArrayFileIO.LoadList());
             return response;
         }
 
         [HttpPost]
-        public IEnumerable<int> Post([FromBody] int[] numbers)
+        public IEnumerable<int> PostNewNumbersToBeSorted([FromBody] int[] numbers)
         {
             var response = new NumberArrayContainer() { Numbers = numbers };
+            
+            // The numbers are saved to file manually here,
+            // because it didn't work in the NumberArrayContainer.
+            // TODO: Remove when NumberArrayContainer saves to file.
             NumberArrayFileIO.SaveList(response.SortedNumbers);
+            
             return response.SortedNumbers;
         }
     }

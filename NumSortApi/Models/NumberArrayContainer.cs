@@ -11,6 +11,7 @@ namespace NumSortApi.Models
 
         public IEnumerable<int> SortedNumbers => MyMergeSorter.Sort(Numbers);
 
+        // TODO: Why isn't this set autimatically? Fix.
         public IEnumerable<int> FiledData
         {
             set => NumberArrayFileIO.SaveList(SortedNumbers);

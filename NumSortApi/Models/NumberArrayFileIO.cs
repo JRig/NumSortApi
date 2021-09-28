@@ -10,10 +10,10 @@ namespace NumSortApi.Models
     {
         public static void SaveList(IEnumerable<int> numbers)
         {
-            string test = String.Join(",", numbers);
+            string stringifiedNumbers = string.Join(",", numbers);
             File.WriteAllText(
                 Directory.GetCurrentDirectory() + "\\LatestFile.txt",
-                test);
+                stringifiedNumbers);
         }
 
         public static IEnumerable<int> LoadList()
