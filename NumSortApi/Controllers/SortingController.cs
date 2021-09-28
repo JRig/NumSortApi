@@ -23,9 +23,8 @@ namespace NumSortApi
         public IEnumerable<int> Post([FromBody] int[] numbers)
         {
             var response = new NumberArrayContainer() { Numbers = numbers };
-            //return MyMergeSorter.Sort(numbers);
+            NumberArrayFileIO.SaveList(response.SortedNumbers);
             return response.SortedNumbers;
         }
-
     }
 }
